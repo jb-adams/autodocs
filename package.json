@@ -1,0 +1,25 @@
+{
+  "name": "ga4gh-autodocs",
+  "version": "0.1.0",
+  "description": "Tool for automated builds of GA4GH Standards documentation pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jb-adams/ga4gh-autodocs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jb-adams/ga4gh-autodocs/issues"
+  },
+  "homepage": "https://github.com/jb-adams/ga4gh-autodocs#readme",
+  "dependencies": {
+    "handlebars": "^4.5.1",
+    "handlebars.filter": "^1.0.1",
+    "js-yaml": "^3.13.1",
+    "markdown-it": "^10.0.0"
+  }
+}

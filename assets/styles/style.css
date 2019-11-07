@@ -1,0 +1,305 @@
+body {
+	color: #444;
+	margin-right: 24px;
+  margin: 0 24px 0 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: Lato;
+  font-weight: 300;
+}
+
+.h2, .h3, h4, h5 {
+  color: #1b75bb;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+.h2	{
+	font-size: 20px;
+}
+.h3	{
+	font-size: 16px;
+}
+h4 {
+  font-size: 12px;
+}
+
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+ol.doc-counter {
+  counter-reset:item;
+  padding-left: 0;
+}
+
+li.doc-counter {
+  display: block;
+}
+
+li.doc-counter:before {
+  content: counters(item, ".") " ";
+  counter-increment: item;
+}
+
+.p {
+  font-size: 16px;
+  color: black;
+  margin: 0;
+}
+
+.t {
+  font-size: 16px;
+  color: black;
+  margin: 0;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.code {
+  background-color: #f7f7f8;
+  font-family: Helvetica;
+  padding: 10px;
+}
+
+.param-name {
+  width: 100%;
+}
+
+tr:nth-child(even) {
+  background: #f7f8f7;
+}
+
+.tbl {
+  width: 100%;
+}
+
+.tbl-cell {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.tbl-header {
+  background: #f7f8f7;
+}
+
+.toc-entry {
+  color: #1b75bb;
+}
+
+.toc-link {
+  color: #1b75bb;
+}
+
+.toc-tab1 {
+  text-indent: 8px;
+}
+
+.toc-tab2 {
+  text-indent: 16px;
+}
+
+.toc-tab3 {
+  text-indent: 24px;
+}
+
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.toc {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.section {
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0 0 0;
+}
+
+.section-header {
+  display: inline-block;
+}
+
+.section-block {
+  padding: 20px 0 20px 0;
+}
+
+.title {
+  border-bottom: 1px solid #ccc;
+}
+
+#main {
+  font-family: Lato;
+  font-weight: 300;
+  padding-top: 100px;
+  padding-left: 15%;
+}
+
+#sidebar {
+  font-family: Lato;
+  font-weight: 300;
+  background: #f7f7f8;
+  padding: 100px 20px 20px 20px;
+  float: left;
+  width: 15%;
+  height: 100vh;
+  position: fixed;
+  overflow-y: scroll;
+}
+
+#navbar {
+  position: fixed;
+}

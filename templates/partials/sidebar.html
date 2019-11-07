@@ -1,0 +1,89 @@
+<div id="sidebar">
+    <h4>Table of Contents</h4>
+    
+    <ol class="toc doc-counter">
+
+      {{#oai}}
+        {{#info}}
+          <li class="toc-entry doc-counter">
+            <a class="toc-link" href="#_overview">Overview</a>
+            <ol class="doc-counter">
+              {{#version}}
+                <li class="toc-entry toc-tab1 doc-counter">
+                  <a class="toc-link" href="#_version_information">
+                    Version Information
+                  </a>
+                </li>
+              {{/version}}
+
+              {{#contact}}
+                <li class="toc-entry toc-tab1 doc-counter">
+                  <a class="toc-link" href="#_contact_information">
+                    Contact Information
+                  </a>
+                </li>
+              {{/contact}}
+
+            </ol>
+          </li>
+        {{/info}}
+      
+        {{#paths}}
+          <li class="toc-entry doc-counter">
+            <a class="toc-link" href="#_paths">Paths</a>
+            <ol>
+              {{#apis}}
+                <li class="toc-entry toc-tab1">
+                  <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}}{{/lambda.camelcase}}">
+                    {{{baseName}}}
+                  </a>
+                  <ol>
+                    {{#operations}}
+                      {{#operation}}
+                        <li class="toc-entry toc-tab2">
+                          <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}}{{/lambda.camelcase}}">
+                            {{{summary}}}
+                          </a>
+                          <ol>
+                            
+                            <li class="toc-entry toc-tab3">
+                              <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} description{{/lambda.camelcase}}">
+                                Description
+                              </a>
+                            </li>
+
+                            {{#hasParams}}
+                              <li class="toc-entry toc-tab3">
+                                <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} parameters{{/lambda.camelcase}}">
+                                  Parameters
+                                </a>
+                              </li>
+                            {{/hasParams}}
+
+                            <li class="toc-entry toc-tab3">
+                              <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} responses{{/lambda.camelcase}}">
+                                Responses
+                              </a>
+                            </li>
+
+                            {{#tags}}
+                              <li class="toc-entry toc-tab3">
+                                <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} tags{{/lambda.camelcase}}">
+                                  Tags
+                                </a>
+                              </li>
+                            {{/tags}}
+                          </ol>
+                        </li>
+                      {{/operation}}
+                    {{/operations}}
+                  </ol>
+                </li>
+              {{/apis}}
+            </ol>
+          </li>
+        {{/paths}}
+
+      {{/oai}}
+    </ol>
+  </div>

@@ -1,0 +1,32 @@
+{{>header}}
+{{>navbar}}
+{{>sidebar}}
+
+<div id="main">
+  <div class="container">
+    <ol class="doc-counter">
+
+      {{#oai.info}}
+        <h1>{{{title}}}</h1>
+      {{/oai.info}}
+
+      <li class="doc-counter">Overview</li>
+
+      {{#pre_oai}}
+        <li class="doc-counter">{{{MyMarkdown this}}}</li>
+      {{/pre_oai}}
+
+      <li class="doc-counter">
+        <span>Paths</span>
+        <p>The OAI Developer Documentation would go here</p>
+      </li>
+
+      {{#post_oai}}
+        <li class="doc-counter">{{{filter this "markdown"}}}</li>
+      {{/post_oai}}
+
+    </ol>
+  </div>
+</div>
+
+{{>footer}}
