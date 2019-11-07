@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{{appName}}}</title>
+    <style type="text/css">
+      {{>style.css}}
+      {{>bootstrap/css/bootstrap.css}}
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <nav style="background-color: #1b75bb;" class="navbar navbar-dark fixed-top">
+      <a class="navbar-brand" href="#">
+        <img src="img/output.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        GA4GH OpenAPI
+      </a>
+    </nav>
+
+    <div id="sidebar">
+      <h4>Table of Contents</h4>
+      
+      <ol class="toc">
+        <li class="toc-entry">
+          <a class="toc-link" href="#_overview">Overview</a>
+          <ol>
+            {{#version}}
+              <li class="toc-entry toc-tab1">
+                <a class="toc-link" href="#_version_information">
+                  Version Information
+                </a>
+              </li>
+            {{/version}}
+
+            {{#infoName}}
+              <li class="toc-entry toc-tab1">
+                <a class="toc-link" href="#_contact_information">
+                  Contact Information
+                </a>
+              </li>
+            {{/infoName}}
+
+          </ol>
+        </li>
+
+        
+        {{#apiInfo}}
+          <li class="toc-entry">
+            <a class="toc-link" href="#_paths">Paths</a>
+            <ol>
+              {{#apis}}
+                <li class="toc-entry toc-tab1">
+                  <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}}{{/lambda.camelcase}}">
+                    {{{baseName}}}
+                  </a>
+                  <ol>
+                    {{#operations}}
+                      {{#operation}}
+                        <li class="toc-entry toc-tab2">
+                          <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}}{{/lambda.camelcase}}">
+                            {{{summary}}}
+                          </a>
+                          <ol>
+                            
+                            <li class="toc-entry toc-tab3">
+                              <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} description{{/lambda.camelcase}}">
+                                Description
+                              </a>
+                            </li>
+
+                            {{#hasParams}}
+                              <li class="toc-entry toc-tab3">
+                                <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} parameters{{/lambda.camelcase}}">
+                                  Parameters
+                                </a>
+                              </li>
+                            {{/hasParams}}
+
+                            <li class="toc-entry toc-tab3">
+                              <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} responses{{/lambda.camelcase}}">
+                                Responses
+                              </a>
+                            </li>
+
+                            {{#tags}}
+                              <li class="toc-entry toc-tab3">
+                                <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} tags{{/lambda.camelcase}}">
+                                  Tags
+                                </a>
+                              </li>
+                            {{/tags}}
+                          </ol>
+                        </li>
+                      {{/operation}}
+                    {{/operations}}
+                  </ol>
+                </li>
+              {{/apis}}
+            </ol>
+          </li>
+        {{/apiInfo}}
+
+      </ol>
+    </div>
+
+    <div id="main">
+      <div class="container">
+        <h1 class="title">{{{appName}}}</h1>
+
+        <ol>
+
+          <div class="section">
+            <li class="h2">
+              <span class="section-header" id="_overview">Overview</span>
+              <div class="section-block">
+                <p class="p">{{{appDescription}}}</p>
+              </div>
+              <ol>
+                {{#version}}
+                  <li class="h3">
+                    <span id="_version_information">Version Information</span>
+                    <div class="section-block">
+                      <p class="p">Version: {{{version}}}</p>
+                    </div>
+                  </li>
+                {{/version}}
+
+                {{#infoName}}
+                  <li class="h3">
+                    <span id="_contact_information">Contact Information</span>
+                    <div class="section-block">
+                      <p class="p">Contact: {{{infoName}}}</p>
+                      {{#infoEmail}}<p class="p">Contact Email: {{{infoEmail}}}</p>{{/infoEmail}}
+                    </div>
+                  </li>
+                {{/infoName}}
+              </ol>
+            </li>
+          </div>
+        
+          {{#apiInfo}}
+            <div class="section">
+              <li class="h2">
+                <span id="_paths">Paths</span>
+                <div class="section-block"></div>
+                <ol>
+                  {{#apis}}
+                    <li class="h3">
+                      <span id="_{{#lambda.camelcase}}{{{baseName}}}{{/lambda.camelcase}}">
+                        {{{baseName}}}
+                      </span>
+                      <ol>
+                        {{#operations}}
+                          {{#operation}}
+                            <li class="h4">
+                              <span id="_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}}{{/lambda.camelcase}}">
+                                {{summary}}
+                              </span>
+                              <span style="display:block;" class="p http-method code">
+                                {{httpMethod}} {{path}}
+                              </span>
+
+                              <ol>
+                                <li class="h5">
+                                  <span id="_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} description{{/lambda.camelcase}}">
+                                    Description
+                                  </span>
+                                  <div class="method-notes">{{notes}}</div>
+                                </li>
+
+                                {{#hasParams}}
+                                  <li class="h5">
+                                    <span id="_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} parameters{{/lambda.camelcase}}">
+                                      Parameters
+                                    </span>
+                                    <table class="tbl t">
+                                      <thead>
+                                        <tr class="tbl-header">
+                                          <th class="tbl-cell">Type</th>
+                                          <th class="tbl-cell">Name</th>
+                                          <th class="tbl-cell">Description</th>
+                                          <th class="tbl-cell">Schema</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {{#allParams}}
+                                          <tr>
+                                            <!-- param type (path/query) -->
+                                            <td class="tbl-cell bold">
+                                              {{#isPathParam}}Path{{/isPathParam}}
+                                              {{#isQueryParam}}Query{{/isQueryParam}}
+                                            </td>
+
+                                            <!-- param name -->
+                                            <td class="tbl-cell">
+                                              <div class="bold">{{{paramName}}}</div>
+                                              {{#required}}<em>required</em>{{/required}}
+                                              {{^required}}<em>optional</em>{{/required}}
+                                            </td>
+
+                                            <!-- param description -->
+                                            <td class="tbl-cell">{{{description}}}</td>
+
+                                            <!-- param schema -->
+                                            <td class="tbl-cell">
+                                              {{#isString}}string{{/isString}}
+                                              {{#isInteger}}integer{{/isInteger}}
+                                            </td>
+                                          </tr>
+                                        {{/allParams}}
+                                      </tbody>
+                                    </table>
+                                  </li>
+                                {{/hasParams}}
+
+                                <li class="h5">
+                                  <span id="_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} responses{{/lambda.camelcase}}">
+                                    Responses
+                                  </span>
+                                  <table class="tbl t">
+                                    <thead>
+                                      <tr class="tbl-header">
+                                        <th class="tbl-cell">HTTP Code</th>
+                                        <th class="tbl-cell">Description</th>
+                                        <th class="tbl-cell">Schema</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {{#responses}}
+                                        <tr>
+                                          <td class="tbl-cell bold">{{{code}}}</td>
+                                          <td class="tbl-cell">{{{message}}}</td>
+                                          <td class="tbl-cell">{{#simpleType}}<a href="#{{dataType}}">{{dataType}}</a>{{/simpleType}}</td>
+                                        </tr>
+                                      {{/responses}}
+                                    </tbody>
+                                  </table>
+                                </li>
+
+                                {{#tags}}
+                                  {{#-first}}
+                                    <li class="h5">
+                                      <span id="_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} tags{{/lambda.camelcase}}">
+                                        Tags
+                                      </span>
+                                  {{/-first}}
+                                        <p class="p">{{name}}</p>
+                                  {{#-last}}
+                                    </li>
+                                  {{/-last}}
+                                {{/tags}}
+                              </ol>
+                            </li>
+                          {{/operation}}
+                        {{/operations}}
+                      </ol>
+                    </li>
+                  {{/apis}}
+                </ol>
+              </li>
+            </div>
+          {{/apiInfo}}
+
+          {{#models}}
+            {{#-first}}
+              <div class="section">
+                <li class="h2">
+                  <span>Definitions</span>
+                  <ol>
+            {{/-first}}
+
+            {{#model}}
+
+              <li class="h3" id="{{name}}">
+                <span>{{name}}</span>
+                <p class="p">{{{description}}}</p>
+                <table class="tbl t">
+                  <thead>
+                    <tr class="tbl-header">
+                      <th class="tbl-cell">Name</th>
+                      <th class="tbl-cell">Description</th>
+                      <th class="tbl-cell">Schema</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#vars}}
+                      <tr>
+                        <td class="tbl-cell">
+                          <div class="bold">{{{baseName}}}</div>
+                          {{#required}}<em>required</em>{{/required}}
+                          {{^required}}<em>optional</em>{{/required}}
+                        </td>
+                        <td class="tbl-cell">{{{description}}}</td>
+                        <td class="tbl-cell">{{{openApiType}}}</td>
+                      </tr>
+                    {{/vars}}
+                  </tbody>
+                </table>
+              </li>
+            {{/model}}
+
+            {{#-last}}
+                  </ol>
+                </li>
+              </div>
+            {{/-last}}
+          {{/models}}
+
+        </ol>
+      </div>
+    </div>
+
+  </body>
+</html>

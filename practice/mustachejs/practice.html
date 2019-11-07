@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.js" integrity="sha256-rP/7cD6sF9Rey5N+nwEgClCdovR+NIuUxWMkyqak9vU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.js" integrity="sha256-AWgPAFzQtgIkB0XSi4vUObxBABh1+SQTJS7A5QmD6SE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="document">
+  </div>
+  <script>
+    var i1 = 1;
+    var i2 = 1;
+    var i3 = 1;
+
+    var url = "https://raw.githubusercontent.com/ga4gh-rnaseq/schema/master/rnaget-openapi.yaml"
+
+    $.get(url, function(specRaw) {
+      $.get('templates/index.html', function(template) {
+        var data = jsyaml.safeLoad(specRaw);
+        data.i1 = function() {return i1;}
+        data.i1Add = function() {i1++;}
+        data.i1Reset = function() {i1 = 1;}
+        data.i2 = function() {return i2;}
+        data.i2Add = function() {i2++;}
+        data.i2Reset = function() {i2 = 1;}
+        data.i3 = function() {return i1;}
+        data.i3Add = function() {i3++;}
+        data.i3Reset = function() {i3 = 1;}
+
+
+        var html = Mustache.to_html(template, data);
+        $('#document').html(html);
+      })
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      
+      ol.doc-counter {
+        counter-reset: item;
+        padding-left: 0;
+      }
+
+      li.doc-counter {
+        display:block;
+      }
+
+      li.doc-counter:before {
+        content: counters(item, ".") " ";
+        counter-increment: item;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    
+
+    
+    

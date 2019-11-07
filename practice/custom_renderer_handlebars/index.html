@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      
+      ol.doc-counter {
+        counter-reset: item;
+        padding-left: 0;
+      }
+
+      li.doc-counter {
+        display:block;
+      }
+
+      li.doc-counter:before {
+        content: counters(item, ".") " ";
+        counter-increment: item;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    
+
+    
+    
+<ol class="doc-counter">
+
+    <h1>RNAget API</h1>
+
+  <li class="doc-counter">Overview</li>
+
+    <!-- <li><h1>Intro</h1>
+
+<p>This is a section put into the built documentation</p>
+
+<h2>A subsection of the intro</h2>
+
+<p>There is a list here:</p>
+
+<ol><li>A first item</li><li>A second item</li><li>A third item</li></ol>
+
+<h3>A new subsection</h3>
+
+<p>hello world</p></li> -->
+    <li class="doc-counter"><span>Intro</span></li><ol class="doc-counter"><p>This is a section put into the built documentation</p><li class="doc-counter"><span>A subsection of the intro</span></li><p>There is a list here:</p><ol><li><p>A first item</p></li><li><p>A second item</p></li><li><p>A third item</p></li></ol><li class="doc-counter"><span>A new subsection</span></li><p>hello world</p></ol>
+
+  <li class="doc-counter">
+    <span>Paths</span>
+    <p>The OAI Developer Documentation would go here</p>
+  </li>
+
+
+</ol>
+
+    <h1>from the footer</h1>
+    <p>executing helper sum -> the sum is 35</p>
+  </body>
+</html>
