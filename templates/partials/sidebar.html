@@ -1,5 +1,7 @@
 <div id="sidebar">
-    <h4>Table of Contents</h4>
+    <div>
+      <span class="heading tier3">Table of Contents</h4>
+    </div>
     
     <ol class="toc doc-counter">
 
@@ -27,52 +29,58 @@
             </ol>
           </li>
         {{/info}}
-      
-        {{#paths}}
+      {{/oai}}
+
+      {{#preOaiMdFps}}
+        {{{md2HtmlSidebarHelper this}}}
+      {{/preOaiMdFps}}
+
+      {{#oai}}
+        {{#apiInfo}}
           <li class="toc-entry doc-counter">
             <a class="toc-link" href="#_paths">Paths</a>
-            <ol>
+            <ol class="doc-counter">
               {{#apis}}
-                <li class="toc-entry toc-tab1">
-                  <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}}{{/lambda.camelcase}}">
+                <li class="toc-entry toc-tab1 doc-counter">
+                  <a class="toc-link" href="#_{{{snakeCase "paths" baseName}}}">
                     {{{baseName}}}
                   </a>
-                  <ol>
+                  <ol class="doc-counter">
                     {{#operations}}
                       {{#operation}}
-                        <li class="toc-entry toc-tab2">
-                          <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}}{{/lambda.camelcase}}">
+                        <li class="toc-entry toc-tab2 doc-counter">
+                          <a class="toc-link" href="#_{{{snakeCase "paths" ../../baseName summary}}}">
                             {{{summary}}}
                           </a>
-                          <ol>
+                          <ol class="doc-counter">
                             
-                            <li class="toc-entry toc-tab3">
-                              <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} description{{/lambda.camelcase}}">
+                            <li class="toc-entry toc-tab3 doc-counter">
+                              <a class="toc-link" href="#_{{{snakeCase "paths" ../../baseName summary "description"}}}">
                                 Description
                               </a>
                             </li>
 
                             {{#hasParams}}
-                              <li class="toc-entry toc-tab3">
-                                <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} parameters{{/lambda.camelcase}}">
+                              <li class="toc-entry toc-tab3 doc-counter">
+                                <a class="toc-link" href="#_{{{snakeCase "paths" ../../baseName summary "parameters"}}}">
                                   Parameters
                                 </a>
                               </li>
                             {{/hasParams}}
 
-                            <li class="toc-entry toc-tab3">
-                              <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} responses{{/lambda.camelcase}}">
+                            <li class="toc-entry toc-tab3 doc-counter">
+                              <a class="toc-link" href="#_{{{snakeCase "paths" ../../baseName summary "responses"}}}">
                                 Responses
                               </a>
                             </li>
 
-                            {{#tags}}
-                              <li class="toc-entry toc-tab3">
-                                <a class="toc-link" href="#_{{#lambda.camelcase}}{{{baseName}}} {{{summary}}} tags{{/lambda.camelcase}}">
+                            {{#hasTags}}
+                              <li class="toc-entry toc-tab3 doc-counter">
+                                <a class="toc-link" href="#_{{{snakeCase "paths" ../../baseName summary "tags"}}}">
                                   Tags
                                 </a>
                               </li>
-                            {{/tags}}
+                            {{/hasTags}}
                           </ol>
                         </li>
                       {{/operation}}
@@ -82,8 +90,30 @@
               {{/apis}}
             </ol>
           </li>
-        {{/paths}}
+        {{/apiInfo}}
+
+        {{#components}}
+          {{#hasSchemas}}
+            <li class="toc-entry doc-counter">
+              <a href="#_{{{snakeCase "definitions"}}}" class="toc-link">
+                Definitions
+              </a>
+              <ol class="doc-counter">
+                {{#schemas}}
+                  <li class="toc-entry toc-tab1 doc-counter">
+                    <a href="#_{{{snakeCase "definitions" name }}}" class="toc-link">{{{name}}}</a>
+                  </li>
+                {{/schemas}}
+              </ol>
+
+            </li>
+          {{/hasSchemas}}
+        {{/components}}
 
       {{/oai}}
+
+      {{#postOaiMdFps}}
+        {{{md2HtmlSidebarHelper this}}}
+      {{/postOaiMdFps}}
     </ol>
   </div>

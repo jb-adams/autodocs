@@ -123,4 +123,4 @@ data.pre_oai = pre_oai_md;
 
 
 var result = render('templates/apidoc.html', data);
-fs.writeFileSync("index.html", result);
+fs.writeFileSync("build/index.html", result);

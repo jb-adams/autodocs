@@ -1,31 +1,31 @@
 body {
-	color: #444;
+	color: red;
 	margin-right: 24px;
   margin: 0 24px 0 0;
   padding: 0;
-}
-
-h1, h2, h3, h4, h5 {
-	font-family: Lato;
+  font-family: Lato;
   font-weight: 300;
 }
 
-.h2, .h3, h4, h5 {
+h1 {
+  margin: 0;
+}
+
+.heading {
   color: #1b75bb;
 }
 
-h1 {
-  font-size: 25px;
+.tier1 {
+  font-size: 2.25rem;
 }
-
-.h2	{
-	font-size: 20px;
+.tier2	{
+	font-size: 1.75rem;
 }
-.h3	{
-	font-size: 16px;
+.tier3	{
+	font-size: 1.50rem;
 }
-h4 {
-  font-size: 12px;
+.tier4 {
+  font-size: 1.25rem;
 }
 
 hr	{
@@ -49,10 +49,17 @@ li.doc-counter:before {
   counter-increment: item;
 }
 
+.avoid-navbar {
+  padding-top: 52px;
+}
+
 .p {
-  font-size: 16px;
+  font-size: 1.10rem;
   color: black;
   margin: 0;
+  line-height: 1.25;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .t {
@@ -71,9 +78,8 @@ li.doc-counter:before {
 }
 
 .code {
-  background-color: #f7f7f8;
-  font-family: Helvetica;
-  padding: 10px;
+  font-family: monospace;
+  background-color: #DDD;
 }
 
 .param-name {
@@ -86,6 +92,9 @@ tr:nth-child(even) {
 
 .tbl {
   width: 100%;
+  font-size: 1.10rem;
+  color: black;
+  margin-top: 10px;
 }
 
 .tbl-cell {
@@ -266,7 +275,6 @@ font-style: italic;
 
 .section {
   border-bottom: 1px solid #ccc;
-  padding: 20px 0 0 0;
 }
 
 .section-header {
@@ -274,7 +282,11 @@ font-style: italic;
 }
 
 .section-block {
-  padding: 20px 0 20px 0;
+  padding-top: 20px;
+}
+
+.subsection-header {
+  padding-top: 20px;
 }
 
 .title {
