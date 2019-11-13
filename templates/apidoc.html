@@ -133,12 +133,12 @@
                                                 {{#items}}
                                                   {{#type}}[{{{this}}}]{{/type}}
                                                   {{#complexType}}
-                                                    [<a href="#_definitions_{{{this}}}"><em>{{{this}}}</em></a>]
+                                                    [<a href="#_{{{snakeCase "definitions" this}}}"><em>{{{this}}}</em></a>]
                                                   {{/complexType}}
                                                 {{/items}}
 
                                                 {{#complexType}}
-                                                  <a href="#_definitions_{{{this}}}">{{{this}}}</a>
+                                                  <a href="#_{{{snakeCase "definitions" this}}}">{{{this}}}</a>
                                                 {{/complexType}}
                                               {{/schema}}
                                               ({{{this.contentType}}})

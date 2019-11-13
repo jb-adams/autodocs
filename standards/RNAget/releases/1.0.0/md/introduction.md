@@ -11,7 +11,7 @@ For the software developer, these common endpoints and patterns make it easier t
 This repository has several files describing the RNAget API specification:
 
 * The [API specification](https://github.com/ga4gh-rnaseq/schema/blob/master/rnaget.md) document
-* A [machine-readable](https://github.com/ga4gh-rnaseq/schema/blob/master/rnaget-openapi.yaml) OpenAPI instance of the specification. View in online visualizer
+* A [machine-readable](https://github.com/ga4gh-rnaseq/schema/blob/master/rnaget-openapi.yaml) OpenAPI instance of the specification. View in [online visualizer](https://editor.swagger.io/?url=https://raw.githubusercontent.com/ga4gh-rnaseq/schema/master/rnaget-openapi.yaml)
 * Introduction to accessing and [testing implementations](https://github.com/ga4gh-rnaseq/schema/blob/master/testing/README.md) for compliance
 * Additional [background](https://github.com/ga4gh-rnaseq/schema/blob/master/rna_seq_design_notes.md) on the API
 * The automated build of the compliance report is [here](https://ga4gh-rnaseq.github.io/rnaget-compliance-suite/report/)

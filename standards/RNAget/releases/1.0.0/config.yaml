@@ -1,0 +1,6 @@
+oaiUrl: https://raw.githubusercontent.com/ga4gh-rnaseq/schema/f50ffd8a34e13eaf17a0943ef033f2b1b028f21b/rnaget-openapi.yaml
+preOaiUrls:
+  - standards/RNAget/md/introduction.md
+  - standards/RNAget/md/design.md
+postOaiUrls:
+  - standards/RNAget/md/background.md

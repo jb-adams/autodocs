@@ -1,6 +1,0 @@
-oaiFile: /Users/jadams/Github/ga4gh-rnaseq/schema/rnaget-openapi.yaml
-preOaiFiles:
-  - standards/RNAget/md/introduction.md
-  - standards/RNAget/md/design.md
-postOaiFiles:
-  - standards/RNAget/md/background.md
