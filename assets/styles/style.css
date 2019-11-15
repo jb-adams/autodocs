@@ -293,6 +293,11 @@ font-style: italic;
   border-bottom: 1px solid #ccc;
 }
 
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 #main {
   font-family: Lato;
   font-weight: 300;

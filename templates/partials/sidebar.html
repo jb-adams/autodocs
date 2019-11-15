@@ -26,10 +26,29 @@
                 </li>
               {{/contact}}
 
+              {{#license}}
+                <li class="toc-entry toc-tab1 doc-counter">
+                  <a class="toc-link" href="#_license">
+                    License Information
+                  </a>
+                </li>
+              {{/license}}
+
             </ol>
           </li>
         {{/info}}
       {{/oai}}
+
+      {{#oai.info.description}}
+          <li class="toc-entry doc-counter">
+            <a class="toc-link" href="#_description">
+              Description
+            </a>
+            <ol class="doc-counter">
+              {{{md2HtmlSidebar "description" this "1" "0"}}}
+            </ol>
+          </li>
+      {{/oai.info.description}}
 
       {{#preOaiMdFps}}
         {{{md2HtmlSidebarHelper this}}}
@@ -112,8 +131,8 @@
 
       {{/oai}}
 
-      {{#postOaiMdFps}}
-        {{{md2HtmlSidebarHelper this}}}
-      {{/postOaiMdFps}}
+      {{#postOaiMds}}
+        {{{md2HtmlSidebar this.identifier this.data "1" "1"}}}
+      {{/postOaiMds}}
     </ol>
   </div>

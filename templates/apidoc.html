@@ -1,6 +1,15 @@
 {{>header}}
 {{>navbar}}
-{{>sidebar}}
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-6 nopadding">
+      {{>sidebar}}
+    </div>
+
+    <div class="col-lg-6 nopadding">
 
 <div id="main">
   <div class="container">
@@ -12,10 +21,7 @@
         <div class="section">
           <li id="_overview" class="heading tier1 doc-counter avoid-navbar">
             <span class="heading tier1 section-header">Overview</span>
-            <div class="section-block">
-              <p class="p">{{{description}}}</p>
-
-            </div>
+            
             <ol class="doc-counter">
               {{#version}}
                 <li id="_version_information" class="heading tier2 doc-counter avoid-navbar">
@@ -35,18 +41,39 @@
                   </div>
                 </li>
               {{/contact}}
+
+              {{#license}}
+                <li id="_license" class="heading tier2 doc-counter avoid-navbar">
+                  <span>License Information</span>
+                  <div class="section-block">
+                    {{#name}}<p class="p">License: {{{this}}}</p>{{/name}}
+                    {{#url}}<p class="p">License URL: <a href="{{{this}}}">link</a></p>{{/url}}
+                  </div>
+                </li>
+              {{/license}}
             </ol>
           </li>
         </div>
       {{/oai.info}}
 
-      {{#preOaiMdFps}}
+      {{#oai.info.description}}
         <div class="section">
-          <li id="_{{{fileId this}}}" class="heading tier1 doc-counter avoid-navbar">
-            {{{md2HtmlMainHelper this}}}
+          <li id="_description" class="heading tier1 doc-counter avoid-navbar">
+            <span>Description</span>
+            <ol class="doc-counter">
+              {{{md2HtmlMain "description" this "1" "0"}}}
+            </ol>
           </li>
         </div>
-      {{/preOaiMdFps}}
+      {{/oai.info.description}}
+
+      {{#preOaiMds}}
+        <div class="section">
+          <li id="_{{{this.identifier}}}" class="heading tier1 doc-counter avoid-navbar">
+            {{{md2HtmlMain this.identifier this.data "1" "1"}}}
+          </li>
+        </div>
+      {{/preOaiMds}}
 
       {{#oai}}
         {{#apiInfo}}
@@ -62,12 +89,12 @@
                         {{#operation}}
                           <li id="_{{{snakeCase "paths" ../../baseName summary}}}" class="heading tier3 doc-counter avoid-navbar">
                             <span>{{{summary}}}</span>
-                            <p class="p">{{{httpMethod}}} {{{path}}}</p>
+                            <p class="p">{{{code (uppercase httpMethod) path}}}</p>
 
                             <ol class="doc-counter">
                               <li id="_{{{snakeCase "paths" ../../baseName summary "description"}}}" class="heading tier4 doc-counter avoid-navbar">
                                 <span>Description</span>
-                                <p class="p">{{{description}}}</p>
+                                <p class="p">{{{md2HtmlMain "none" description "0"}}}</p>
                               </li>
 
                               {{#hasParams}}
@@ -123,7 +150,7 @@
                                     {{#responses}}
                                       <tr>
                                         <td class="tbl-cell">{{{httpCode}}}</td>
-                                        <td class="tbl-cell">{{{description}}}</td>
+                                        <td class="tbl-cell">{{{md2HtmlMain "none" description "0"}}}</td>
                                         <td class="tbl-cell">
                                           {{#content}}
                                             <div>
@@ -196,7 +223,7 @@
                           {{#properties}}
                             <tr>
                               <td class="tbl-cell bold">{{{name}}}</td>
-                              <td class="tbl-cell">{{{description}}}</td>
+                              <td class="tbl-cell">{{{codeAndLinksMd2Html description}}}</td>
                               <td class="tbl-cell">
                                 {{{type}}}
                                 {{#items}}[<em>{{{type}}}</em>]{{/items}}
@@ -215,16 +242,24 @@
 
       {{/oai}}
 
-      {{#postOaiMdFps}}
+      {{#postOaiMds}}
         <div class="section">
-          <li id="_{{{fileId this}}}" class="heading tier1 doc-counter avoid-navbar">
-            {{{md2HtmlMainHelper this}}}
+          <li id="_{{{this.identifier}}}" class="heading tier1 doc-counter avoid-navbar">
+            {{{md2HtmlMain this.identifier this.data "1" "1"}}}
           </li>
         </div>
-      {{/postOaiMdFps}}
+      {{/postOaiMds}}
 
     </ol>
   </div>
 </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+
 
 {{>footer}}
