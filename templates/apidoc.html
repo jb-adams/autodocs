@@ -5,258 +5,256 @@
 
 <div class="container-fluid nopadding" style="padding: 0;">
   <div class="row">
-    <div class="col-lg-6 nopadding" style="padding: 0;">
+    <div id="sidebar-column" class="col-xl-2 col-lg-3 col-md-4 d-none d-md-block">
       {{>sidebar}}
     </div>
 
-    <div class="col-lg-6 nopadding" style="padding: 0;">
+    <div class="col-xl-2 col-lg-3 col-md-4 d-none d-md-block" style="padding: 0;"></div>
+    <div id="main-column" class="col-xl-10 col-lg-9 col-md-8 col-sm-12">
 
-<div id="main">
-  <div class="container">
-    <ol class="doc-counter">
+      <div id="main">
+        <div class="container">
+          <ol class="doc-counter">
 
-      {{#oai.info}}
-        <h1 class="title">{{{title}}}</h1>
-      
-        <div class="section">
-          <li id="_overview" class="heading tier1 doc-counter avoid-navbar">
-            <span class="heading tier1 section-header">Overview</span>
+            {{#oai.info}}
+              <h1 class="title">{{{title}}}</h1>
             
-            <ol class="doc-counter">
-              {{#version}}
-                <li id="_version_information" class="heading tier2 doc-counter avoid-navbar">
-                  <span>Version Information</span>
-                  <div class="section-block">
-                    <p class="p">Version: {{{this}}}</p>
-                  </div>
+              <div class="section">
+                <li id="_overview" class="heading tier1 doc-counter avoid-navbar">
+                  <span class="heading tier1 section-header">Overview</span>
+                  
+                  <ol class="doc-counter">
+                    {{#version}}
+                      <li id="_version_information" class="heading tier2 doc-counter avoid-navbar">
+                        <span>Version Information</span>
+                        <div class="section-block">
+                          <p class="p">Version: {{{this}}}</p>
+                        </div>
+                      </li>
+                    {{/version}}
+
+                    {{#contact}}
+                      <li id="_contact_information" class="heading tier2 doc-counter avoid-navbar">
+                        <span>Contact Information</span>
+                        <div class="section-block">
+                          {{#name}}<p class="p">Contact: {{{this}}}</p>{{/name}}
+                          {{#email}}<p class="p">Contact Email: {{{this}}}</p>{{/email}}
+                        </div>
+                      </li>
+                    {{/contact}}
+
+                    {{#license}}
+                      <li id="_license" class="heading tier2 doc-counter avoid-navbar">
+                        <span>License Information</span>
+                        <div class="section-block">
+                          {{#name}}<p class="p">License: {{{this}}}</p>{{/name}}
+                          {{#url}}<p class="p">License URL: <a href="{{{this}}}">link</a></p>{{/url}}
+                        </div>
+                      </li>
+                    {{/license}}
+                  </ol>
                 </li>
-              {{/version}}
+              </div>
+            {{/oai.info}}
 
-              {{#contact}}
-                <li id="_contact_information" class="heading tier2 doc-counter avoid-navbar">
-                  <span>Contact Information</span>
-                  <div class="section-block">
-                    {{#name}}<p class="p">Contact: {{{this}}}</p>{{/name}}
-                    {{#email}}<p class="p">Contact Email: {{{this}}}</p>{{/email}}
-                  </div>
+            {{#oai.info.description}}
+              <div class="section">
+                <li id="_description" class="heading tier1 doc-counter avoid-navbar">
+                  <span>Description</span>
+                  <ol class="doc-counter">
+                    {{{md2HtmlMain "description" this "1" "0"}}}
+                  </ol>
                 </li>
-              {{/contact}}
+              </div>
+            {{/oai.info.description}}
 
-              {{#license}}
-                <li id="_license" class="heading tier2 doc-counter avoid-navbar">
-                  <span>License Information</span>
-                  <div class="section-block">
-                    {{#name}}<p class="p">License: {{{this}}}</p>{{/name}}
-                    {{#url}}<p class="p">License URL: <a href="{{{this}}}">link</a></p>{{/url}}
-                  </div>
+            {{#preOaiMds}}
+              <div class="section">
+                <li id="_{{{this.identifier}}}" class="heading tier1 doc-counter avoid-navbar">
+                  {{{md2HtmlMain this.identifier this.data "1" "1"}}}
                 </li>
-              {{/license}}
-            </ol>
-          </li>
-        </div>
-      {{/oai.info}}
+              </div>
+            {{/preOaiMds}}
 
-      {{#oai.info.description}}
-        <div class="section">
-          <li id="_description" class="heading tier1 doc-counter avoid-navbar">
-            <span>Description</span>
-            <ol class="doc-counter">
-              {{{md2HtmlMain "description" this "1" "0"}}}
-            </ol>
-          </li>
-        </div>
-      {{/oai.info.description}}
-
-      {{#preOaiMds}}
-        <div class="section">
-          <li id="_{{{this.identifier}}}" class="heading tier1 doc-counter avoid-navbar">
-            {{{md2HtmlMain this.identifier this.data "1" "1"}}}
-          </li>
-        </div>
-      {{/preOaiMds}}
-
-      {{#oai}}
-        {{#apiInfo}}
-          <div class="section">
-            <li id="_paths" class="heading tier1 doc-counter avoid-navbar">
-              <span>Paths</span>
-              <ol class="doc-counter">
-                {{#apis}}
-                  <li id="_{{{snakeCase "paths" baseName}}}" class="heading tier2 doc-counter avoid-navbar">
-                    <span>{{{baseName}}}</span>
+            {{#oai}}
+              {{#apiInfo}}
+                <div class="section">
+                  <li id="_paths" class="heading tier1 doc-counter avoid-navbar">
+                    <span>Paths</span>
                     <ol class="doc-counter">
-                      {{#operations}}
-                        {{#operation}}
-                          <li id="_{{{snakeCase "paths" ../../baseName summary}}}" class="heading tier3 doc-counter avoid-navbar">
-                            <span>{{{summary}}}</span>
-                            <p class="p">{{{code (uppercase httpMethod) path}}}</p>
+                      {{#apis}}
+                        <li id="_{{{snakeCase "paths" baseName}}}" class="heading tier2 doc-counter avoid-navbar">
+                          <span>{{{baseName}}}</span>
+                          <ol class="doc-counter">
+                            {{#operations}}
+                              {{#operation}}
+                                <li id="_{{{snakeCase "paths" ../../baseName summary}}}" class="heading tier3 doc-counter avoid-navbar">
+                                  <span>{{{summary}}}</span>
+                                  <p class="p">{{{code (uppercase httpMethod) path}}}</p>
 
-                            <ol class="doc-counter">
-                              <li id="_{{{snakeCase "paths" ../../baseName summary "description"}}}" class="heading tier4 doc-counter avoid-navbar">
-                                <span>Description</span>
-                                <p class="p">{{{md2HtmlMain "none" description "0"}}}</p>
-                              </li>
+                                  <ol class="doc-counter">
+                                    <li id="_{{{snakeCase "paths" ../../baseName summary "description"}}}" class="heading tier4 doc-counter avoid-navbar">
+                                      <span>Description</span>
+                                      <p class="p">{{{md2HtmlMain "none" description "0"}}}</p>
+                                    </li>
 
-                              {{#hasParams}}
-                                <li id="_{{{snakeCase "paths" ../../baseName summary "parameters"}}}" class="heading tier4 doc-counter avoid-navbar">
-                                  <span>Parameters</span>
-                                  <table class="tbl">
-                                    <thead>
-                                      <tr class="tbl-header">
-                                        <th class="tbl-cell">Type</th>
-                                        <th class="tbl-cell">Name</th>
-                                        <th class="tbl-cell">Description</th>
-                                        <th class="tbl-cell">Schema</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      {{#parameters}}
-                                        <tr>
-                                          <td class="tbl-cell bold">{{{in}}}</td>
-                                          <td class="tbl-cell">
-                                            <div class="bold">{{{name}}}</div>
-                                            <em>
-                                              {{#required}}required{{/required}}
-                                              {{^required}}optional{{/required}}
-                                            </em>
-                                          </td>
-                                          <td class="tbl-cell">{{{codeMd2Html description}}}</td>
-                                          <td class="tbl-cell">
-                                            {{#schema}}
-                                              {{#type}}{{{this}}}{{/type}}
-                                              {{#items}}
-                                                 [<em>{{{this.type}}}</em>]
-                                              {{/items}}
-                                            {{/schema}}
-                                          </td>
-                                        </tr>
-                                      {{/parameters}}
-                                    </tbody>
-                                  </table>
+                                    {{#hasParams}}
+                                      <li id="_{{{snakeCase "paths" ../../baseName summary "parameters"}}}" class="heading tier4 doc-counter avoid-navbar">
+                                        <span>Parameters</span>
+                                        <table class="tbl">
+                                          <thead>
+                                            <tr class="tbl-header">
+                                              <th class="tbl-cell">Type</th>
+                                              <th class="tbl-cell">Name</th>
+                                              <th class="tbl-cell">Description</th>
+                                              <th class="tbl-cell">Schema</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {{#parameters}}
+                                              <tr>
+                                                <td class="tbl-cell bold">{{{in}}}</td>
+                                                <td class="tbl-cell">
+                                                  <div class="bold">{{{name}}}</div>
+                                                  <em>
+                                                    {{#required}}required{{/required}}
+                                                    {{^required}}optional{{/required}}
+                                                  </em>
+                                                </td>
+                                                <td class="tbl-cell">{{{codeMd2Html description}}}</td>
+                                                <td class="tbl-cell">
+                                                  {{#schema}}
+                                                    {{#type}}{{{this}}}{{/type}}
+                                                    {{#items}}
+                                                      [<em>{{{this.type}}}</em>]
+                                                    {{/items}}
+                                                  {{/schema}}
+                                                </td>
+                                              </tr>
+                                            {{/parameters}}
+                                          </tbody>
+                                        </table>
+                                      </li>
+                                    {{/hasParams}}
+
+                                    <li id="_{{{snakeCase "paths" ../../baseName summary "responses"}}}" class="heading tier4 doc-counter avoid-navbar">
+                                      <span>Responses</span>
+                                      <table class="tbl">
+                                        <thead>
+                                          <tr class="tbl-header">
+                                            <th class="tbl-cell">HTTP Code</th>
+                                            <th class="tbl-cell">Description</th>
+                                            <th class="tbl-cell">Schema</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          {{#responses}}
+                                            <tr>
+                                              <td class="tbl-cell">{{{httpCode}}}</td>
+                                              <td class="tbl-cell">{{{md2HtmlMain "none" description "0"}}}</td>
+                                              <td class="tbl-cell">
+                                                {{#content}}
+                                                  <div>
+                                                    {{#schema}}
+                                                      {{#type}}{{{this}}}{{/type}}
+
+                                                      {{#items}}
+                                                        {{#type}}[{{{this}}}]{{/type}}
+                                                        {{#complexType}}
+                                                          [<a href="#_{{{snakeCase "definitions" this}}}"><em>{{{this}}}</em></a>]
+                                                        {{/complexType}}
+                                                      {{/items}}
+
+                                                      {{#complexType}}
+                                                        <a href="#_{{{snakeCase "definitions" this}}}">{{{this}}}</a>
+                                                      {{/complexType}}
+                                                    {{/schema}}
+                                                    ({{{this.contentType}}})
+                                                  </div>
+                                                {{/content}}
+                                              </td>
+                                            </tr>
+                                          {{/responses}}
+                                        </tbody>
+                                      </table>
+                                    </li>
+
+                                    {{#hasTags}}
+                                      <li id="_{{{snakeCase "paths" ../../baseName summary "tags"}}}" class="heading tier4 doc-counter avoid-navbar">
+                                        <span>Tags</span>
+                                        <ul class="p">
+                                          {{#tags}}
+                                            <li>{{{this}}}</li>
+                                          {{/tags}}
+                                        </ul>
+                                      </li>
+                                    {{/hasTags}}
+
+                                  </ol>
                                 </li>
-                              {{/hasParams}}
-
-                              <li id="_{{{snakeCase "paths" ../../baseName summary "responses"}}}" class="heading tier4 doc-counter avoid-navbar">
-                                <span>Responses</span>
-                                <table class="tbl">
-                                  <thead>
-                                    <tr class="tbl-header">
-                                      <th class="tbl-cell">HTTP Code</th>
-                                      <th class="tbl-cell">Description</th>
-                                      <th class="tbl-cell">Schema</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    {{#responses}}
-                                      <tr>
-                                        <td class="tbl-cell">{{{httpCode}}}</td>
-                                        <td class="tbl-cell">{{{md2HtmlMain "none" description "0"}}}</td>
-                                        <td class="tbl-cell">
-                                          {{#content}}
-                                            <div>
-                                              {{#schema}}
-                                                {{#type}}{{{this}}}{{/type}}
-
-                                                {{#items}}
-                                                  {{#type}}[{{{this}}}]{{/type}}
-                                                  {{#complexType}}
-                                                    [<a href="#_{{{snakeCase "definitions" this}}}"><em>{{{this}}}</em></a>]
-                                                  {{/complexType}}
-                                                {{/items}}
-
-                                                {{#complexType}}
-                                                  <a href="#_{{{snakeCase "definitions" this}}}">{{{this}}}</a>
-                                                {{/complexType}}
-                                              {{/schema}}
-                                              ({{{this.contentType}}})
-                                            </div>
-                                          {{/content}}
-                                        </td>
-                                      </tr>
-                                    {{/responses}}
-                                  </tbody>
-                                </table>
-                              </li>
-
-                              {{#hasTags}}
-                                <li id="_{{{snakeCase "paths" ../../baseName summary "tags"}}}" class="heading tier4 doc-counter avoid-navbar">
-                                  <span>Tags</span>
-                                  <ul class="p">
-                                    {{#tags}}
-                                      <li>{{{this}}}</li>
-                                    {{/tags}}
-                                  </ul>
-                                </li>
-                              {{/hasTags}}
-
-                            </ol>
-                          </li>
-                        {{/operation}}
-                      {{/operations}}
+                              {{/operation}}
+                            {{/operations}}
+                          </ol>
+                        </li>
+                      {{/apis}}
                     </ol>
                   </li>
-                {{/apis}}
-              </ol>
-            </li>
-          </div>
-        {{/apiInfo}}
+                </div>
+              {{/apiInfo}}
 
-        {{#components}}
-          {{#hasSchemas}}
-            <div class="section">
-              <li id="_definitions" class="heading tier1 doc-counter avoid-navbar">
-                <span>Definitions</span>
-                <ol class="doc-counter">
-                  {{#schemas}}
-                    <li id="_{{{snakeCase "definitions" name}}}" class="heading tier2 doc-counter avoid-navbar">
-                      <span>{{{name}}}</span>
-                      <p class="p">{{{description}}}</p>
-                      <table class="tbl">
-                        <thead>
-                          <tr class="tbl-header">
-                            <th class="tbl-cell">Property Name</th>
-                            <th class="tbl-cell">Description</th>
-                            <th class="tbl-cell">Schema</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {{#properties}}
-                            <tr>
-                              <td class="tbl-cell bold">{{{name}}}</td>
-                              <td class="tbl-cell">{{{codeAndLinksMd2Html description}}}</td>
-                              <td class="tbl-cell">
-                                {{{type}}}
-                                {{#items}}[<em>{{{type}}}</em>]{{/items}}
-                              </td>
-                            </tr>
-                          {{/properties}}
-                        </tbody>
-                      </table>
+              {{#components}}
+                {{#hasSchemas}}
+                  <div class="section">
+                    <li id="_definitions" class="heading tier1 doc-counter avoid-navbar">
+                      <span>Definitions</span>
+                      <ol class="doc-counter">
+                        {{#schemas}}
+                          <li id="_{{{snakeCase "definitions" name}}}" class="heading tier2 doc-counter avoid-navbar">
+                            <span>{{{name}}}</span>
+                            <p class="p">{{{description}}}</p>
+                            <table class="tbl">
+                              <thead>
+                                <tr class="tbl-header">
+                                  <th class="tbl-cell">Property Name</th>
+                                  <th class="tbl-cell">Description</th>
+                                  <th class="tbl-cell">Schema</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {{#properties}}
+                                  <tr>
+                                    <td class="tbl-cell bold">{{{name}}}</td>
+                                    <td class="tbl-cell">{{{codeAndLinksMd2Html description}}}</td>
+                                    <td class="tbl-cell">
+                                      {{{type}}}
+                                      {{#items}}[<em>{{{type}}}</em>]{{/items}}
+                                    </td>
+                                  </tr>
+                                {{/properties}}
+                              </tbody>
+                            </table>
+                          </li>
+                        {{/schemas}}
+                      </ol>
                     </li>
-                  {{/schemas}}
-                </ol>
-              </li>
-            </div>
-          {{/hasSchemas}}
-        {{/components}}
+                  </div>
+                {{/hasSchemas}}
+              {{/components}}
 
-      {{/oai}}
+            {{/oai}}
 
-      {{#postOaiMds}}
-        <div class="section">
-          <li id="_{{{this.identifier}}}" class="heading tier1 doc-counter avoid-navbar">
-            {{{md2HtmlMain this.identifier this.data "1" "1"}}}
-          </li>
+            {{#postOaiMds}}
+              <div class="section">
+                <li id="_{{{this.identifier}}}" class="heading tier1 doc-counter avoid-navbar">
+                  {{{md2HtmlMain this.identifier this.data "1" "1"}}}
+                </li>
+              </div>
+            {{/postOaiMds}}
+
+          </ol>
         </div>
-      {{/postOaiMds}}
-
-    </ol>
-  </div>
-</div>
-
-
+      </div>
     </div>
-
   </div>
 </div>
 

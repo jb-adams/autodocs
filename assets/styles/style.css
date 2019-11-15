@@ -302,20 +302,27 @@ font-style: italic;
   font-family: Lato;
   font-weight: 300;
   padding-top: 100px;
-  padding-left: 15%;
 }
 
 #sidebar {
   font-family: Lato;
   font-weight: 300;
   background: #f7f7f8;
-  padding: 100px 20px 20px 20px;
-  float: left;
+  padding: 100px 20px 20px 30px;
   height: 100vh;
-  position: fixed;
   overflow-y: scroll;
 }
 
 #navbar {
   position: fixed;
+}
+
+#sidebar-column {
+  padding: 0;
+  position:fixed;
+  z-index: 1000;
+}
+
+#main-column {
+  padding: 0;
 }
