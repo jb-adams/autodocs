@@ -41,12 +41,14 @@ ol.doc-counter {
 }
 
 li.doc-counter {
-  display: block;
+  display: table;
 }
 
 li.doc-counter:before {
   content: counters(item, ".") " ";
   counter-increment: item;
+  display: table-cell;
+  padding-right: 5px;
 }
 
 .avoid-navbar {
@@ -112,18 +114,6 @@ tr:nth-child(even) {
 
 .toc-link {
   color: #1b75bb;
-}
-
-.toc-tab1 {
-  text-indent: 8px;
-}
-
-.toc-tab2 {
-  text-indent: 16px;
-}
-
-.toc-tab3 {
-  text-indent: 24px;
 }
 
 .license-info {
@@ -198,7 +188,9 @@ code {
 
 .toc {
   list-style-type: none;
-  padding-left: 0;
+  list-style-position: outside;
+  margin: 0;
+  padding: 0;
 }
 
 .up {

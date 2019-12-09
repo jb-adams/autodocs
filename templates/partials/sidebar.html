@@ -3,21 +3,19 @@
       <span class="heading tier3">Table of Contents</h4>
     </div>
     
-    <ol class="toc doc-counter">
-
+    <ol class="toc doc-counter" style="list-style-position: outside;">
       {{#oai}}
         {{#info}}
-          <li class="toc-entry doc-counter">
+          <li class="toc-entry doc-counter toc-tab0">
             <a class="toc-link" href="#_overview">Overview</a>
             <ol class="doc-counter">
               {{#version}}
-                <li class="toc-entry toc-tab1 doc-counter">
+                <li class="toc-entry doc-counter toc-tab1">
                   <a class="toc-link" href="#_version_information">
                     Version Information
                   </a>
                 </li>
               {{/version}}
-
               {{#contact}}
                 <li class="toc-entry toc-tab1 doc-counter">
                   <a class="toc-link" href="#_contact_information">
@@ -40,7 +38,7 @@
       {{/oai}}
 
       {{#oai.info.description}}
-          <li class="toc-entry doc-counter">
+          <li class="toc-entry doc-counter toc-tab0">
             <a class="toc-link" href="#_description">
               Description
             </a>
