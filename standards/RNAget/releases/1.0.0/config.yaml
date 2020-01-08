@@ -1,4 +1,5 @@
 oaiUrl: https://raw.githubusercontent.com/ga4gh-rnaseq/schema/master/rnaget-openapi.yaml
-preOaiMdUrls: []
+preOaiMdUrls:
+  - https://raw.githubusercontent.com/jb-adams/ga4gh-autodocs/master/standards/RNAget/releases/1.0.0/md/using.md
 postOaiMdUrls:
   - https://raw.githubusercontent.com/jb-adams/ga4gh-autodocs/master/standards/RNAget/releases/1.0.0/md/background.md
