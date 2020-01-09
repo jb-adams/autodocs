@@ -16,7 +16,7 @@ Image
 
 Expression and continuous matrices can be selected by one of two methods: by **ID** or **matrix metadata**, depending on the requested endpoint.
 
-### Matrix selection by ID
+**Matrix selection by ID**
 
 Expression/continuous matrices can be stored as permanent objects and referenced by a single, persistent, unique identifier (ID). Using the ID as a path parameter, the client can request the associated matrix for download.
 
@@ -33,7 +33,7 @@ The following API endpoints will return a single matrix according to the request
 - `/continuous/{continuousId}/ticket`
 - `/continuous/{continuousId}/bytes`
 
-### Matrix selection and joining by metadata
+**Matrix selection and joining by metadata**
 
 Each permanent matrix has associated metadata (version, parent project id, parent study id, etc). Using query string parameters, the client can request all matrices with metadata properties matching requested values. For example, the client can request all matrices with a parent study id of `f3ba0b59bed0fa2f1030e7cb508324d1`.
 
@@ -55,7 +55,7 @@ The following API endpoints will join multiple matrices into a single matrix, th
 
 Expression and continuous matrices can be downloaded in one of two ways: by **ticket** or **bytes**, depending on the requested endpoint.
 
-### Ticket
+**Ticket**
 
 The JSON response from certain expression and continuous-related endpoints is a **ticket**, which provides the client with all information required to download the desired data in the specified format. The ticket contains a url (and optionally, auth or formatting headers) that the client can submit an additional request to in order to download a dynamically-generated matrix. Thus, the ticket API flow involves 2 requests to obtain the expression or continuous matrix: the first request obtains the ticket, and the second request returns the matrix from the url and headers specified in the ticket. The ticket flow, while more complex, is also modular, enabling additional auth mechanisms to access data.
 
@@ -65,7 +65,7 @@ The following API endpoints will return a JSON ticket:
 * `/continuous/{continuousId}/ticket`
 * `/continuous/ticket`
 
-### Bytes
+**Bytes**
 
 In contrast to a JSON ticket request, a **bytes** request yields the matrix file directly. The bytes API flow involves a single request, the response of which contains the dynamically-generated matrix.
 

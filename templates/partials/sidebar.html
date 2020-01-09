@@ -48,9 +48,11 @@
           </li>
       {{/oai.info.description}}
 
-      {{#preOaiMdFps}}
-        {{{md2HtmlSidebarHelper this}}}
-      {{/preOaiMdFps}}
+      {{#preOaiMds}}
+        <li class="toc-entry doc-counter">
+          {{{md2HtmlSidebar this.identifier this.data "1" "1"}}}
+        </li>
+      {{/preOaiMds}}
 
       {{#oai}}
         {{#apiInfo}}
@@ -130,7 +132,9 @@
       {{/oai}}
 
       {{#postOaiMds}}
-        {{{md2HtmlSidebar this.identifier this.data "1" "1"}}}
+        <li class="toc-entry doc-counter">
+          {{{md2HtmlSidebar this.identifier this.data "1" "1"}}}
+        </li>
       {{/postOaiMds}}
     </ol>
   </div>
