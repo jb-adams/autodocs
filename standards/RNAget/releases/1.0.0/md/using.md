@@ -10,7 +10,8 @@
 
 RNAget supports two means of selecting RNA data: selection by ID and selection by metadata.  For each of these, the resultant matrix can either be downloaded as an inline attachment or a ticket object containing a download URL can be requested.  The API flow for both Expression and Continuous are nearly identical, differing only in data-type specific row/column filtering parameters.
 
-Image
+![selecting and retrieving the RNA Data Matrix](https://raw.githubusercontent.com/jb-adams/ga4gh-autodocs/master/standards/RNAget/releases/1.0.0/img/figure1.png)
+
 
 ## Matrix selection by ID vs. matrix selection and joining by metadata
 
