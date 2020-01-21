@@ -85,6 +85,13 @@
                       {{#apis}}
                         <li id="_{{{snakeCase "paths" baseName}}}" class="heading tier2 doc-counter avoid-navbar">
                           <span>{{{baseName}}}</span>
+
+                          {{#description}}
+                            <p class="p">
+                              {{{md2HtmlMain "none" this "0"}}}
+                            </p>
+                          {{/description}}
+
                           <ol class="doc-counter">
                             {{#operations}}
                               {{#operation}}
