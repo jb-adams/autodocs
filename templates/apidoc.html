@@ -91,6 +91,11 @@
                               {{{md2HtmlMain "none" this "0"}}}
                             </p>
                           {{/description}}
+                          {{#externalDocs}}
+                            <p class="p">
+                              <a href="{{{url}}}">{{{description}}}</a>
+                            </p>
+                          {{/externalDocs}}
 
                           <ol class="doc-counter">
                             {{#operations}}
